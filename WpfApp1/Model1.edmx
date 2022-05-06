@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ip17Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Accessories">
+          <Key>
+            <PropertyRef Name="Kode A" />
+          </Key>
+          <Property Name="Kode A" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="View A" Type="nvarchar" MaxLength="100" />
+          <Property Name="Color" Type="nvarchar" MaxLength="100" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Availability A" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "19ip17.dbo.Accessory order" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="Accessory order">
+          <Key>
+            <PropertyRef Name="[№ order" />
+            <PropertyRef Name="Kode A" />
+          </Key>
+          <Property Name="[№ order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kode A" Type="int" Nullable="false" />
+          <Property Name="Order status" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="Passport" />
+          </Key>
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="8" />
+          <Property Name="Passport" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Date of Birth" Type="date" />
+          <Property Name="Number phone" Type="int" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="50" />
+          <Property Name="Birthday" Type="date" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="GenderCode" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="PhotoPath" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="ClientService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientID" Type="int" Nullable="false" />
+          <Property Name="ServiceID" Type="int" Nullable="false" />
+          <Property Name="StartTime" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="FIO C" />
+          </Key>
+          <Property Name="FIO C" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="100" />
+          <Property Name="Number phone" Type="int" />
+          <Property Name="Requerd amount" Type="int" />
+        </EntityType>
+        <EntityType Name="Executor">
+          <Key>
+            <PropertyRef Name="FIO E" />
+          </Key>
+          <Property Name="FIO E" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Expiriens" Type="nvarchar" MaxLength="100" />
+          <Property Name="Education" Type="nvarchar" MaxLength="100" />
+          <Property Name="Number phone" Type="int" />
+          <Property Name="Login" Type="nvarchar" MaxLength="8" />
+          <Property Name="Password" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6013: Первичный ключ в таблице или представлении "19ip17.dbo.Fufillment of an order" не определен, его не удалось вывести. Эта таблица или представление исключены. Чтобы использовать сущность, необходимо проверить схему, добавить правильные ключи и раскомментировать ее.
+        <EntityType Name="Fufillment of an order">
+          <Property Name="FIO E" Type="nvarchar" MaxLength="100" />
+          <Property Name="№ order" Type="int" />
+          <Property Name="Date" Type="int" />
+        </EntityType>-->
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="StartDate" Type="date" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="№ order" />
+          </Key>
+          <Property Name="№ order" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO C" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Date O" Type="date" Nullable="false" />
+          <Property Name="Order status" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Kode C" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Cost" Type="money" Nullable="false" />
+          <Property Name="DurationInSeconds" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="MainImagePath" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Type construction">
+          <Key>
+            <PropertyRef Name="Kode C" />
+          </Key>
+          <Property Name="Type C" Type="nvarchar" MaxLength="100" />
+          <Property Name="Color" Type="nvarchar" MaxLength="100" />
+          <Property Name="Foto" Type="nvarchar" MaxLength="100" />
+          <Property Name="Price" Type="int" />
+          <Property Name="Kode C" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Accessory order_Accessories">
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="1" />
+          <End Role="Accessory order" Type="Self.Accessory order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accessories">
+              <PropertyRef Name="Kode A" />
+            </Principal>
+            <Dependent Role="Accessory order">
+              <PropertyRef Name="Kode A" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessory order_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Accessory order" Type="Self.Accessory order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="№ order" />
+            </Principal>
+            <Dependent Role="Accessory order">
+              <PropertyRef Name="[№ order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="GenderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientService_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientService" Type="Self.ClientService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientService">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ClientService" Type="Self.ClientService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientService">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "19ip17.dbo.Fufillment of an order", на которую ссылается связь.
+        <Association Name="FK_Fufillment of an order_Executor" />-->
+        <!--Ошибки, обнаруженные при создании:
+ошибка 6004: Невозможно найти таблицу "19ip17.dbo.Fufillment of an order", на которую ссылается связь.
+        <Association Name="FK_Fufillment of an order_Order" />-->
+        <Association Name="FK_Order_Customer1">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="FIO C" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FIO C" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Type construction">
+          <End Role="Type construction" Type="Self.Type construction" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type construction">
+              <PropertyRef Name="Kode C" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Kode C" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ip17ModelContainer">
+          <EntitySet Name="Accessories" EntityType="Self.Accessories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientService" EntityType="Self.ClientService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Executor" EntityType="Self.Executor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type construction" EntityType="Self.Type construction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accessory order" EntityType="Self.Accessory order" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Accessory order].[[№ order] AS [[№ order], 
+    [Accessory order].[Kode A] AS [Kode A], 
+    [Accessory order].[Order status] AS [Order status]
+    FROM [dbo].[Accessory order] AS [Accessory order]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Accessory order_Accessories" Association="Self.FK_Accessory order_Accessories">
+            <End Role="Accessories" EntitySet="Accessories" />
+            <End Role="Accessory order" EntitySet="Accessory order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessory order_Order" Association="Self.FK_Accessory order_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Accessory order" EntitySet="Accessory order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientService_Client" Association="Self.FK_ClientService_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientService" EntitySet="ClientService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientService_Service" Association="Self.FK_ClientService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ClientService" EntitySet="ClientService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer1" Association="Self.FK_Order_Customer1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Type construction" Association="Self.FK_Order_Type construction">
+            <End Role="Type construction" EntitySet="Type construction" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ip17Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Accessories">
+          <Key>
+            <PropertyRef Name="Kode_A" />
+          </Key>
+          <Property Name="Kode_A" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="View_A" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Availability_A" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accessory_order" Relationship="Self.FK_Accessory_order_Accessories" FromRole="Accessories" ToRole="Accessory_order" />
+        </EntityType>
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="Passport" />
+          </Key>
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Passport" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="DateTime" Precision="0" />
+          <Property Name="Number_phone" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Birthday" Type="DateTime" Precision="0" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GenderCode" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PhotoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gender" Relationship="Self.FK_Client_Gender" FromRole="Client" ToRole="Gender" />
+          <NavigationProperty Name="ClientService" Relationship="Self.FK_ClientService_Client" FromRole="Client" ToRole="ClientService" />
+        </EntityType>
+        <EntityType Name="ClientService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientID" Type="Int32" Nullable="false" />
+          <Property Name="ServiceID" Type="Int32" Nullable="false" />
+          <Property Name="StartTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_ClientService_Client" FromRole="ClientService" ToRole="Client" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_ClientService_Service" FromRole="ClientService" ToRole="Service" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="FIO_C" />
+          </Key>
+          <Property Name="FIO_C" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Number_phone" Type="Int32" />
+          <Property Name="Requerd_amount" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Customer1" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Executor">
+          <Key>
+            <PropertyRef Name="FIO_E" />
+          </Key>
+          <Property Name="FIO_E" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Expiriens" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Education" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Number_phone" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Gender">
+          <Key>
+            <PropertyRef Name="Code" />
+          </Key>
+          <Property Name="Code" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Client_Gender" FromRole="Gender" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Manufacturer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="C__order" />
+          </Key>
+          <Property Name="C__order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO_C" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_O" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Order_status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Kode_C" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Order_Customer1" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="Accessory_order" Relationship="Self.FK_Accessory_order_Order" FromRole="Order" ToRole="Accessory_order" />
+          <NavigationProperty Name="Type_construction" Relationship="Self.FK_Order_Type_construction" FromRole="Order" ToRole="Type_construction" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="DurationInSeconds" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="MainImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientService" Relationship="Self.FK_ClientService_Service" FromRole="Service" ToRole="ClientService" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Type_construction">
+          <Key>
+            <PropertyRef Name="Kode_C" />
+          </Key>
+          <Property Name="Type_C" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Color" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Foto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="Kode_C" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Order_Type_construction" FromRole="Type_construction" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Accessory_order">
+          <Key>
+            <PropertyRef Name="C___order" />
+            <PropertyRef Name="Kode_A" />
+          </Key>
+          <Property Name="C___order" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kode_A" Type="Int32" Nullable="false" />
+          <Property Name="Order_status" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Accessories" Relationship="Self.FK_Accessory_order_Accessories" FromRole="Accessory_order" ToRole="Accessories" />
+          <NavigationProperty Name="Order" Relationship="Self.FK_Accessory_order_Order" FromRole="Accessory_order" ToRole="Order" />
+        </EntityType>
+        <Association Name="FK_Accessory_order_Accessories">
+          <End Role="Accessories" Type="Self.Accessories" Multiplicity="1" />
+          <End Role="Accessory_order" Type="Self.Accessory_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Accessories">
+              <PropertyRef Name="Kode_A" />
+            </Principal>
+            <Dependent Role="Accessory_order">
+              <PropertyRef Name="Kode_A" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Client_Gender">
+          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gender">
+              <PropertyRef Name="Code" />
+            </Principal>
+            <Dependent Role="Client">
+              <PropertyRef Name="GenderCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientService_Client">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientService" Type="Self.ClientService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientService">
+              <PropertyRef Name="ClientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClientService_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="1" />
+          <End Role="ClientService" Type="Self.ClientService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientService">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer1">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="FIO_C" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="FIO_C" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Accessory_order_Order">
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Accessory_order" Type="Self.Accessory_order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="C__order" />
+            </Principal>
+            <Dependent Role="Accessory_order">
+              <PropertyRef Name="C___order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Type_construction">
+          <End Role="Type_construction" Type="Self.Type_construction" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_construction">
+              <PropertyRef Name="Kode_C" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="Kode_C" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accessories" EntityType="Self.Accessories" />
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="ClientService" EntityType="Self.ClientService" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="Executor" EntityType="Self.Executor" />
+          <EntitySet Name="Gender" EntityType="Self.Gender" />
+          <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" />
+          <EntitySet Name="Order" EntityType="Self.Order" />
+          <EntitySet Name="Service" EntityType="Self.Service" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Type_construction" EntityType="Self.Type_construction" />
+          <EntitySet Name="Accessory_order" EntityType="Self.Accessory_order" />
+          <AssociationSet Name="FK_Accessory_order_Accessories" Association="Self.FK_Accessory_order_Accessories">
+            <End Role="Accessories" EntitySet="Accessories" />
+            <End Role="Accessory_order" EntitySet="Accessory_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Client_Gender" Association="Self.FK_Client_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Client" EntitySet="Client" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientService_Client" Association="Self.FK_ClientService_Client">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientService" EntitySet="ClientService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientService_Service" Association="Self.FK_ClientService_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="ClientService" EntitySet="ClientService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer1" Association="Self.FK_Order_Customer1">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Accessory_order_Order" Association="Self.FK_Accessory_order_Order">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Accessory_order" EntitySet="Accessory_order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Type_construction" Association="Self.FK_Order_Type_construction">
+            <End Role="Type_construction" EntitySet="Type_construction" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ip17ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Accessories">
+            <EntityTypeMapping TypeName="ip17Model.Accessories">
+              <MappingFragment StoreEntitySet="Accessories">
+                <ScalarProperty Name="Kode_A" ColumnName="Kode A" />
+                <ScalarProperty Name="View_A" ColumnName="View A" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Availability_A" ColumnName="Availability A" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authorization">
+            <EntityTypeMapping TypeName="ip17Model.Authorization">
+              <MappingFragment StoreEntitySet="Authorization">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date of Birth" />
+                <ScalarProperty Name="Number_phone" ColumnName="Number phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="ip17Model.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="GenderCode" ColumnName="GenderCode" />
+                <ScalarProperty Name="PhotoPath" ColumnName="PhotoPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClientService">
+            <EntityTypeMapping TypeName="ip17Model.ClientService">
+              <MappingFragment StoreEntitySet="ClientService">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ClientID" ColumnName="ClientID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="ip17Model.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="FIO_C" ColumnName="FIO C" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Number_phone" ColumnName="Number phone" />
+                <ScalarProperty Name="Requerd_amount" ColumnName="Requerd amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Executor">
+            <EntityTypeMapping TypeName="ip17Model.Executor">
+              <MappingFragment StoreEntitySet="Executor">
+                <ScalarProperty Name="FIO_E" ColumnName="FIO E" />
+                <ScalarProperty Name="Expiriens" ColumnName="Expiriens" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Number_phone" ColumnName="Number phone" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gender">
+            <EntityTypeMapping TypeName="ip17Model.Gender">
+              <MappingFragment StoreEntitySet="Gender">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Manufacturer">
+            <EntityTypeMapping TypeName="ip17Model.Manufacturer">
+              <MappingFragment StoreEntitySet="Manufacturer">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order">
+            <EntityTypeMapping TypeName="ip17Model.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="C__order" ColumnName="№ order" />
+                <ScalarProperty Name="FIO_C" ColumnName="FIO C" />
+                <ScalarProperty Name="Date_O" ColumnName="Date O" />
+                <ScalarProperty Name="Order_status" ColumnName="Order status" />
+                <ScalarProperty Name="Kode_C" ColumnName="Kode C" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service">
+            <EntityTypeMapping TypeName="ip17Model.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="DurationInSeconds" ColumnName="DurationInSeconds" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="MainImagePath" ColumnName="MainImagePath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ip17Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_construction">
+            <EntityTypeMapping TypeName="ip17Model.Type_construction">
+              <MappingFragment StoreEntitySet="Type construction">
+                <ScalarProperty Name="Type_C" ColumnName="Type C" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Kode_C" ColumnName="Kode C" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Accessory_order">
+            <EntityTypeMapping TypeName="ip17Model.Accessory_order">
+              <MappingFragment StoreEntitySet="Accessory order">
+                <ScalarProperty Name="C___order" ColumnName="[№ order" />
+                <ScalarProperty Name="Kode_A" ColumnName="Kode A" />
+                <ScalarProperty Name="Order_status" ColumnName="Order status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
