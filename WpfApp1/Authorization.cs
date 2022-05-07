@@ -19,5 +19,6 @@ namespace WpfApp1
         public string Passport { get; set; }
         public Nullable<System.DateTime> Date_of_Birth { get; set; }
         public Nullable<int> Number_phone { get; set; }
+        public int id { get; set; }
     }
 }

@@ -10,6 +10,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DataBase.cs = DataBase.cs
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resours", "Resours", "{8F57C99B-0E40-4244-83A7-B476F76E9B6A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Icons", "Icons", "{5EB24E78-9F54-4657-BF7E-988AA22CE19A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Images", "Images", "{D63E2153-7ACD-498D-B6EB-EE705F6825A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Themes", "Themes", "{CC0DA012-97E2-46FC-8BEE-D49B2C6D2442}"
+	ProjectSection(SolutionItems) = preProject
+		WpfApp1\Dictionary1.xaml = WpfApp1\Dictionary1.xaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +34,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8F57C99B-0E40-4244-83A7-B476F76E9B6A} = {38860401-0487-40CB-B500-214B8B189BD0}
+		{5EB24E78-9F54-4657-BF7E-988AA22CE19A} = {8F57C99B-0E40-4244-83A7-B476F76E9B6A}
+		{D63E2153-7ACD-498D-B6EB-EE705F6825A1} = {8F57C99B-0E40-4244-83A7-B476F76E9B6A}
+		{CC0DA012-97E2-46FC-8BEE-D49B2C6D2442} = {8F57C99B-0E40-4244-83A7-B476F76E9B6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3A0C2D34-E08E-445C-B3A4-A2D24800B754}

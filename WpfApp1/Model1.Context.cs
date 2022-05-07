@@ -27,15 +27,9 @@ namespace WpfApp1
     
         public virtual DbSet<Accessories> Accessories { get; set; }
         public virtual DbSet<Authorization> Authorization { get; set; }
-        public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<ClientService> ClientService { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<Executor> Executor { get; set; }
-        public virtual DbSet<Gender> Gender { get; set; }
-        public virtual DbSet<Manufacturer> Manufacturer { get; set; }
         public virtual DbSet<Order> Order { get; set; }
-        public virtual DbSet<Service> Service { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Type_construction> Type_construction { get; set; }
         public virtual DbSet<Accessory_order> Accessory_order { get; set; }
     }

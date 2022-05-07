@@ -24,6 +24,7 @@ namespace WpfApp1
         public string Adress { get; set; }
         public Nullable<int> Number_phone { get; set; }
         public Nullable<int> Requerd_amount { get; set; }
+        public string Passport { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Order { get; set; }

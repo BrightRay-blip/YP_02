@@ -6,22 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="47a389b0aaee44f283221665c3ba35a4" Name="Diagram1">
         <EntityTypeShape EntityType="ip17Model.Accessories" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip17Model.Authorization" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip17Model.Client" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip17Model.ClientService" Width="1.5" PointX="10.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ip17Model.Authorization" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ip17Model.Customer" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip17Model.Executor" Width="1.5" PointX="2.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip17Model.Gender" Width="1.5" PointX="5.75" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip17Model.Manufacturer" Width="1.5" PointX="4.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ip17Model.Executor" Width="1.5" PointX="7.25" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ip17Model.Order" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip17Model.Service" Width="1.5" PointX="8" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ip17Model.sysdiagrams" Width="1.5" PointX="6.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ip17Model.Type_construction" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ip17Model.Accessory_order" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
         <AssociationConnector Association="ip17Model.FK_Accessory_order_Accessories" ManuallyRouted="false" />
-        <AssociationConnector Association="ip17Model.FK_Client_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="ip17Model.FK_ClientService_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="ip17Model.FK_ClientService_Service" ManuallyRouted="false" />
         <AssociationConnector Association="ip17Model.FK_Order_Customer1" ManuallyRouted="false" />
         <AssociationConnector Association="ip17Model.FK_Accessory_order_Order" ManuallyRouted="false" />
         <AssociationConnector Association="ip17Model.FK_Order_Type_construction" ManuallyRouted="false" />

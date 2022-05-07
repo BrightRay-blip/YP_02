@@ -20,5 +20,6 @@ namespace WpfApp1
         public Nullable<int> Number_phone { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
+        public string Passport { get; set; }
     }
 }
